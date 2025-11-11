@@ -120,7 +120,7 @@ const Index = () => {
             </Button>
             <div className="flex items-center gap-2">
               <Icon name="Play" className="text-primary" size={32} />
-              <span className="text-xl font-bold">StreamHub</span>
+              <span className="text-xl font-bold">Vitanet</span>
             </div>
           </div>
 
