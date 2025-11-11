@@ -122,7 +122,9 @@ const Index = () => {
               <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">V</span>
               </div>
-              <span className="text-xl font-bold">Vitanet</span>
+              <span className="text-xl font-bold">
+                <span className="text-blue-500">Vita</span>net
+              </span>
             </div>
           </div>
 
