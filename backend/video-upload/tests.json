@@ -1,0 +1,32 @@
+{
+  "tests": [
+    {
+      "name": "Test video upload endpoint",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "video": "data:video/mp4;base64,AAAAIGZ0eXBpc29t",
+        "filename": "test.mp4"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "url": "string",
+        "filename": "string",
+        "video_id": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test missing video data",
+      "method": "POST",
+      "path": "/",
+      "body": {},
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "No video data provided"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
