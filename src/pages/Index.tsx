@@ -126,12 +126,11 @@ const Index = () => {
               <Icon name="Menu" size={24} />
             </Button>
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-white text-2xl font-bold">V</span>
-              </div>
-              <span className="text-xl font-bold">
-                <span className="text-blue-500">Vita</span>net
-              </span>
+              <img 
+                src="https://cdn.poehali.dev/files/3bfbda8c-413c-4adb-875d-168cc6f06635.png" 
+                alt="Vitanet"
+                className="h-10 w-auto object-contain"
+              />
             </div>
           </div>
 
