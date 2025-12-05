@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import SplashScreen from '@/components/SplashScreen';
+import VideoPlayer from '@/components/VideoPlayer';
 
 interface Video {
   id: number;
@@ -246,52 +247,81 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {mockVideos.map((video) => (
-                <Card
-                  key={video.id}
-                  className="group cursor-pointer overflow-hidden border-0 bg-transparent hover:bg-card/50 transition-all duration-200"
-                >
-                  <div className="relative aspect-video overflow-hidden rounded-lg">
-                    <img
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute bottom-2 right-2 bg-black/90 text-white text-xs font-semibold px-1.5 py-0.5 rounded">
-                      {video.duration}
-                    </div>
-                    {video.isLive && (
-                      <div className="absolute top-2 left-2">
-                        <Badge className="bg-red-600 hover:bg-red-600 text-white">
-                          <Icon name="Radio" size={12} className="mr-1" />
-                          LIVE
-                        </Badge>
+          <div className="p-4 space-y-6">
+            <div className="max-w-6xl">
+              <VideoPlayer
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                poster="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+                title="Пример видео - Big Buck Bunny"
+              />
+              <div className="mt-4 space-y-2">
+                <h1 className="text-2xl font-bold">Пример видео - Big Buck Bunny</h1>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <span>125K просмотров</span>
+                  <span>2 часа назад</span>
+                </div>
+                <div className="flex items-center gap-3 pt-2">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=demo" />
+                    <AvatarFallback>D</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <p className="font-semibold">Demo Channel</p>
+                    <p className="text-sm text-muted-foreground">1.2М подписчиков</p>
+                  </div>
+                  <Button className="ml-auto">Подписаться</Button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold mb-4">Рекомендуемые видео</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {mockVideos.map((video) => (
+                  <Card
+                    key={video.id}
+                    className="group cursor-pointer overflow-hidden border-0 bg-transparent hover:bg-card/50 transition-all duration-200"
+                  >
+                    <div className="relative aspect-video overflow-hidden rounded-lg">
+                      <img
+                        src={video.thumbnail}
+                        alt={video.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute bottom-2 right-2 bg-black/90 text-white text-xs font-semibold px-1.5 py-0.5 rounded">
+                        {video.duration}
                       </div>
-                    )}
-                  </div>
-
-                  <div className="flex gap-3 p-3">
-                    <Avatar className="h-9 w-9 flex-shrink-0">
-                      <AvatarImage src={video.avatar} />
-                      <AvatarFallback>{video.channel[0]}</AvatarFallback>
-                    </Avatar>
-
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-sm line-clamp-2 mb-1 group-hover:text-primary transition-colors">
-                        {video.title}
-                      </h3>
-                      <p className="text-xs text-muted-foreground">
-                        {video.channel}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {video.views} просмотров • {video.time}
-                      </p>
+                      {video.isLive && (
+                        <div className="absolute top-2 left-2">
+                          <Badge className="bg-red-600 hover:bg-red-600 text-white">
+                            <Icon name="Radio" size={12} className="mr-1" />
+                            LIVE
+                          </Badge>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </Card>
-              ))}
+
+                    <div className="flex gap-3 p-3">
+                      <Avatar className="h-9 w-9 flex-shrink-0">
+                        <AvatarImage src={video.avatar} />
+                        <AvatarFallback>{video.channel[0]}</AvatarFallback>
+                      </Avatar>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium text-sm line-clamp-2 mb-1 group-hover:text-primary transition-colors">
+                          {video.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground">
+                          {video.channel}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {video.views} просмотров • {video.time}
+                        </p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </main>
